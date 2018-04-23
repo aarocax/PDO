@@ -2,14 +2,15 @@
 
 namespace PDO\src;
 
-class PDODaoException extends RuntimeException {
+
+class PDODaoException extends \Exception
 {
-	// Redefine the exception so message isn't optional
+    // Redefine the exception so message isn't optional
     public function __construct($message, $code = 0, Exception $previous = null) {
         // some code
-    
+    	var_dump($message);
         // make sure everything is assigned properly
-        parent::__construct($message, $code, $previous);
+        //parent::__construct($message, $code, $previous);
     }
 
     // custom string representation of object

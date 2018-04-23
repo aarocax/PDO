@@ -4,6 +4,8 @@ namespace PDO\src;
 
 use PDO\src\PDODaoException;
 
+$pdo = new PDODaoException('hola...');
+
 class PDODaoAdmin
 {
 	private $_pdo;
@@ -38,9 +40,8 @@ class PDODaoAdmin
 		      \PDO::ATTR_PERSISTENT => false
 		    )
 			);
-		} catch (PDOException $e) {
-			echo 'Connection failed: ' . $e->getMessage();
-			die();
+		} catch (\PDOException $e) {
+		  throw new PDODaoException($e, 5);
 		}
   }
 
@@ -68,6 +69,7 @@ class PDODaoAdmin
 			}
 		} catch (Exception $e) {
 		 	print "Error al ejecutar la sentencia sql...";
+		 	throw new PDODaoException($e, 5);
 		}
   }
 
